@@ -24,7 +24,7 @@ CHANNEL_NAME='#channel'
 ```
 4. Run demo app
 ```
-python ./main.py
+pipenv run python ./main.py
 ```
 
 
