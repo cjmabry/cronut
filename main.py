@@ -23,7 +23,7 @@ def hello_world():
         assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
         print(f"Got an error: {e.response['error']}")
 
-def get_channel_id(client, channel_name):
+def get_channel_id_by_name(client, channel_name):
     channel_id = None
     try:
         response = client.conversations_list()
@@ -37,7 +37,7 @@ def get_channel_id(client, channel_name):
 
 def get_channel_members(client, channel_name):
     try:
-        channel_id = get_channel_id(client, channel_name)
+        channel_id = get_channel_id_by_name(client, channel_name)
         response = client.conversations_members(channel = channel_id)
         members = response['members']
         assert len(members) > 0
