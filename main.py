@@ -33,7 +33,7 @@ def get_channel_id_by_name(client, channel_name):
     """
     channel_id = None
     try:
-        response = client.conversations_list()
+        response = client.conversations_list(types ='public_channel')
         all_channels = response['channels']
         channel_id = [i['id'] for i in all_channels if '#' + i['name'] == channel_name][0]
         assert channel_id != None
