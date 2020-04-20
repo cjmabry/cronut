@@ -7,7 +7,7 @@ verify_ssl = true
 pylint = "*"
 
 [packages]
-slackclient = ">2.4,<2.6"
+slackclient = ">=2.5,<2.6"
 
 [requires]
 python_version = "3.8"
