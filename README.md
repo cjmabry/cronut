@@ -49,5 +49,16 @@ Install the app to your workspace, and allow the permissions.
 
 ### Bot OAuth Token
 
-Save your bot user OAuth Access Token to the environmental variable `CRONUT_OAUTH_TOKEN`:
+Save your bot user OAuth Access Token to the environmental variable `CRONUT_OAUTH_TOKEN`
+
+## Credits
+
+This app was developed by Bernie 2020 alum:
+
+* Harry Baker
+* Yong Jung Cho 
+* Hannah Fertig
+* Matt Johnson
+* Chris Mabry
+* Haley Zink
 
