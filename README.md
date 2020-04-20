@@ -2,6 +2,10 @@
 
 **Cronut** is a bot that sets users up for a virtual coffee meeting.
 
+## Requirements
+- [Python 3.8](https://www.python.org/)
+- [pipenv](https://github.com/pypa/pipenv) (recommended)
+
 ## Setup
 1. Clone the repo locally
 ```
