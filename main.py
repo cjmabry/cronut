@@ -24,6 +24,13 @@ def hello_world():
         print(f"Got an error: {e.response['error']}")
 
 def get_channel_id_by_name(client, channel_name):
+    """
+    Get a Channel ID Number from a Channel Name
+
+    Keyword arguments:
+    client -- An initialized Slack WebClient object
+    channel_name -- The name of a channel in the format #channel
+    """
     channel_id = None
     try:
         response = client.conversations_list()
@@ -36,6 +43,13 @@ def get_channel_id_by_name(client, channel_name):
     return channel_id
 
 def get_channel_members(client, channel_name):
+    """
+    Get a list of Slack Member IDs given a channel name.
+
+    Keyword arguments:
+    client -- An initialized Slack WebClient object
+    channel_name -- The name of a channel in the format #channel
+    """
     try:
         channel_id = get_channel_id_by_name(client, channel_name)
         response = client.conversations_members(channel = channel_id)
