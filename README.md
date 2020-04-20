@@ -24,7 +24,7 @@ pipenv shell
 ```
 Run demo app
 ```
-python ./main
+python ./main.py
 ```
 
 ## Create Slack App
