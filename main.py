@@ -10,7 +10,7 @@ channel_name = os.environ.get('CHANNEL_NAME','#cronut-dev')
 
 try:
     response = client.chat_postMessage(
-        channel='#cronut-dev',
+        channel=channel_name,
         text="Hello world!")
     assert response["message"]["text"] == "Hello world!"
 except SlackApiError as e:
