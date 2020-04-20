@@ -2,6 +2,31 @@
 
 **Cronut** is a bot that sets users up for a virtual coffee meeting.
 
+## Setup
+1. Clone the repo locally
+```
+git clone git@github.com:cjmabry/cronut.git
+```
+2. Initialize pipenv environment
+```
+cd cronut
+pipenv --python 3.8
+pipenv install
+```
+3. Create local `.env` file with appropriate environment variables
+```
+CRONUT_OAUTH_TOKEN='xoxb-api-token-here'
+CHANNEL_NAME='#channel'
+```
+4. Activate virtual environment
+```
+pipenv shell
+```
+Run demo app
+```
+python ./main
+```
+
 ## Create Slack App
 
 ### Scope Permissions
