@@ -24,12 +24,15 @@ def hello_world():
         print(f"Got an error: {e.response['error']}")
 
 def get_channel_id(client, channel_name):
-    response = client.conversations_list()
-    all_channels = response['channels']
     channel_id = None
-
-    channel_id = [i['id'] for i in all_channels if '#' + i['name'] == channel_name][0]
-
+    try:
+        response = client.conversations_list()
+        all_channels = response['channels']
+        channel_id = [i['id'] for i in all_channels if '#' + i['name'] == channel_name][0]
+        assert channel_id != None
+    except:
+        print(f'The channel {channel_name} was not found in the workspace.')
+        
     return channel_id
 
 def get_channel_members(client, channel_name):
