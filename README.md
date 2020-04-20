@@ -18,14 +18,12 @@ pipenv install
 CRONUT_OAUTH_TOKEN='xoxb-api-token-here'
 CHANNEL_NAME='#channel'
 ```
-4. Activate virtual environment
-```
-pipenv shell
-```
-Run demo app
+4. Run demo app
 ```
 python ./main.py
 ```
+
+
 
 ## Create Slack App
 
