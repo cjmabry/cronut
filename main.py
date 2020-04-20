@@ -32,12 +32,21 @@ def get_channel_id(client, channel_name):
         assert channel_id != None
     except:
         print(f'The channel {channel_name} was not found in the workspace.')
-        
+
     return channel_id
 
 def get_channel_members(client, channel_name):
-    channel_id = get_channel_id(client, channel_name)
-    response = client.conversations_members(channel = channel_id)
+    try:
+        channel_id = get_channel_id(client, channel_name)
+        response = client.conversations_members(channel = channel_id)
+        members = response['members']
+        assert len(members) > 0
+    except SlackApiError as e:
+        assert e.response["ok"]
+        assert e.resoonse["error"]
+        print(f'Got an API Error: {e.resonse["error"]}')
+    except:
+        print(f'There was an error finding members in {channel_name}')
     
     return response['members']
 
