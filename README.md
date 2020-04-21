@@ -42,6 +42,7 @@ This app requires the following token scope permissions:
 5. im:read
 6. mpim:read
 7. mpim:write
+8. users:read
 
 ### Install app to workspace
 

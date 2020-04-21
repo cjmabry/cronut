@@ -62,7 +62,26 @@ def get_channel_members(client, channel_name):
     except:
         print(f'There was an error finding members in {channel_name}')
     
-    return response['members']
+    return [member for member in members if not is_user_an_app_or_bot(client, member)]
+
+def is_user_an_app_or_bot(client, user_id):
+    """
+    Returns true if a user is an app or bot
+
+    Keyword arguments:
+    client -- An initialized Slack WebClient object
+    user_id -- The user id number of a user 
+    """
+    try:
+        user_info = client.users_info(user = user_id)
+        assert user_info["ok"]
+    except SlackApiError as e:
+        # You will get a SlackApiError if "ok" is False
+        assert e.response["ok"] is False
+        assert e.response["error"]  # str like 'invalid_auth', 'channel_not_found'
+        print(f"Got an error: {e.response['error']}")
+
+    return user_info["user"]["is_app_user"] or user_info["user"]["is_bot"]
 
 if __name__ == "__main__":
     channel_members = get_channel_members(client, channel_name)
