@@ -1,4 +1,4 @@
-import os
+import random, os
 from slack import WebClient
 from slack.errors import SlackApiError
 
@@ -64,6 +64,35 @@ def get_channel_members(client, channel_name):
     
     return [member for member in members if not is_user_an_app_or_bot(client, member)]
 
+def split_members_into_groups(members, n):
+    """
+    Takes a list of members and a number and returns
+    a list which contains randomly selected lists of 
+    members of length n
+
+    Keyword arguments:
+    members -- A python list contains member ids
+    n -- The number of elements that you want your list broken up into
+    """
+    random.shuffle(members)
+    
+    results = []
+    for i in range(0, len(members), n):
+        results.append(members[i:i+n])
+
+    last_element = results[-1]
+    if len(last_element) < n:
+        results_max = len(results) - 1
+        results_counter = 0
+        for index, value in enumerate(last_element):
+            if results_counter > results_max:
+                results_counter = 0
+            results[results_counter].append(value)
+            results_counter = results_counter + 1
+        del results[-1]
+    return results
+
+
 def is_user_an_app_or_bot(client, user_id):
     """
     Returns true if a user is an app or bot
@@ -85,4 +114,5 @@ def is_user_an_app_or_bot(client, user_id):
 
 if __name__ == "__main__":
     channel_members = get_channel_members(client, channel_name)
-    print(channel_members)
+    split_groups = split_members_into_groups(channel_members, 3)
+    print(split_groups)
