@@ -52,6 +52,13 @@ Install the app to your workspace, and allow the permissions.
 
 Save your bot user OAuth Access Token to the environmental variable `CRONUT_OAUTH_TOKEN`
 
+## Testing
+
+To run automated tests:
+`
+pipenv python run tests.py
+`
+
 ## Credits
 
 This app was developed by Bernie 2020 alum:
