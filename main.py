@@ -54,6 +54,7 @@ def get_channel_members(client, channel_name):
         channel_id = get_channel_id_by_name(client, channel_name)
         response = client.conversations_members(channel = channel_id)
         members = response['members']
+        print(members)
         assert len(members) > 0
     except SlackApiError as e:
         assert e.response["ok"]
